@@ -17,9 +17,9 @@ const AppSettingsSchema = CollectionSchema(
   name: r'AppSettings',
   id: -5633561779022347008,
   properties: {
-    r'firstLaunch': PropertySchema(
+    r'firstLaunchDate': PropertySchema(
       id: 0,
-      name: r'firstLaunch',
+      name: r'firstLaunchDate',
       type: IsarType.dateTime,
     )
   },
@@ -52,7 +52,7 @@ void _appSettingsSerialize(
   List<int> offsets,
   Map<Type, List<int>> allOffsets,
 ) {
-  writer.writeDateTime(offsets[0], object.firstLaunch);
+  writer.writeDateTime(offsets[0], object.firstLaunchDate);
 }
 
 AppSettings _appSettingsDeserialize(
@@ -62,7 +62,7 @@ AppSettings _appSettingsDeserialize(
   Map<Type, List<int>> allOffsets,
 ) {
   final object = AppSettings();
-  object.firstLaunch = reader.readDateTimeOrNull(offsets[0]);
+  object.firstLaunchDate = reader.readDateTimeOrNull(offsets[0]);
   object.id = id;
   return object;
 }
@@ -175,63 +175,63 @@ extension AppSettingsQueryWhere
 extension AppSettingsQueryFilter
     on QueryBuilder<AppSettings, AppSettings, QFilterCondition> {
   QueryBuilder<AppSettings, AppSettings, QAfterFilterCondition>
-      firstLaunchIsNull() {
+      firstLaunchDateIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
-        property: r'firstLaunch',
+        property: r'firstLaunchDate',
       ));
     });
   }
 
   QueryBuilder<AppSettings, AppSettings, QAfterFilterCondition>
-      firstLaunchIsNotNull() {
+      firstLaunchDateIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
-        property: r'firstLaunch',
+        property: r'firstLaunchDate',
       ));
     });
   }
 
   QueryBuilder<AppSettings, AppSettings, QAfterFilterCondition>
-      firstLaunchEqualTo(DateTime? value) {
+      firstLaunchDateEqualTo(DateTime? value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'firstLaunch',
+        property: r'firstLaunchDate',
         value: value,
       ));
     });
   }
 
   QueryBuilder<AppSettings, AppSettings, QAfterFilterCondition>
-      firstLaunchGreaterThan(
+      firstLaunchDateGreaterThan(
     DateTime? value, {
     bool include = false,
   }) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
         include: include,
-        property: r'firstLaunch',
+        property: r'firstLaunchDate',
         value: value,
       ));
     });
   }
 
   QueryBuilder<AppSettings, AppSettings, QAfterFilterCondition>
-      firstLaunchLessThan(
+      firstLaunchDateLessThan(
     DateTime? value, {
     bool include = false,
   }) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.lessThan(
         include: include,
-        property: r'firstLaunch',
+        property: r'firstLaunchDate',
         value: value,
       ));
     });
   }
 
   QueryBuilder<AppSettings, AppSettings, QAfterFilterCondition>
-      firstLaunchBetween(
+      firstLaunchDateBetween(
     DateTime? lower,
     DateTime? upper, {
     bool includeLower = true,
@@ -239,7 +239,7 @@ extension AppSettingsQueryFilter
   }) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.between(
-        property: r'firstLaunch',
+        property: r'firstLaunchDate',
         lower: lower,
         includeLower: includeLower,
         upper: upper,
@@ -310,30 +310,32 @@ extension AppSettingsQueryLinks
 
 extension AppSettingsQuerySortBy
     on QueryBuilder<AppSettings, AppSettings, QSortBy> {
-  QueryBuilder<AppSettings, AppSettings, QAfterSortBy> sortByFirstLaunch() {
+  QueryBuilder<AppSettings, AppSettings, QAfterSortBy> sortByFirstLaunchDate() {
     return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'firstLaunch', Sort.asc);
+      return query.addSortBy(r'firstLaunchDate', Sort.asc);
     });
   }
 
-  QueryBuilder<AppSettings, AppSettings, QAfterSortBy> sortByFirstLaunchDesc() {
+  QueryBuilder<AppSettings, AppSettings, QAfterSortBy>
+      sortByFirstLaunchDateDesc() {
     return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'firstLaunch', Sort.desc);
+      return query.addSortBy(r'firstLaunchDate', Sort.desc);
     });
   }
 }
 
 extension AppSettingsQuerySortThenBy
     on QueryBuilder<AppSettings, AppSettings, QSortThenBy> {
-  QueryBuilder<AppSettings, AppSettings, QAfterSortBy> thenByFirstLaunch() {
+  QueryBuilder<AppSettings, AppSettings, QAfterSortBy> thenByFirstLaunchDate() {
     return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'firstLaunch', Sort.asc);
+      return query.addSortBy(r'firstLaunchDate', Sort.asc);
     });
   }
 
-  QueryBuilder<AppSettings, AppSettings, QAfterSortBy> thenByFirstLaunchDesc() {
+  QueryBuilder<AppSettings, AppSettings, QAfterSortBy>
+      thenByFirstLaunchDateDesc() {
     return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'firstLaunch', Sort.desc);
+      return query.addSortBy(r'firstLaunchDate', Sort.desc);
     });
   }
 
@@ -352,9 +354,10 @@ extension AppSettingsQuerySortThenBy
 
 extension AppSettingsQueryWhereDistinct
     on QueryBuilder<AppSettings, AppSettings, QDistinct> {
-  QueryBuilder<AppSettings, AppSettings, QDistinct> distinctByFirstLaunch() {
+  QueryBuilder<AppSettings, AppSettings, QDistinct>
+      distinctByFirstLaunchDate() {
     return QueryBuilder.apply(this, (query) {
-      return query.addDistinctBy(r'firstLaunch');
+      return query.addDistinctBy(r'firstLaunchDate');
     });
   }
 }
@@ -367,9 +370,10 @@ extension AppSettingsQueryProperty
     });
   }
 
-  QueryBuilder<AppSettings, DateTime?, QQueryOperations> firstLaunchProperty() {
+  QueryBuilder<AppSettings, DateTime?, QQueryOperations>
+      firstLaunchDateProperty() {
     return QueryBuilder.apply(this, (query) {
-      return query.addPropertyName(r'firstLaunch');
+      return query.addPropertyName(r'firstLaunchDate');
     });
   }
 }
