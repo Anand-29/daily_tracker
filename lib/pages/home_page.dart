@@ -1,3 +1,4 @@
+import 'package:daily_tracker/components/requirement_card.dart';
 import 'package:daily_tracker/theme/theme_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -21,6 +22,7 @@ class HomePage extends StatelessWidget {
           ),
         ),
       ),
+      body: const RequirementCard(),
     );
   }
 }
